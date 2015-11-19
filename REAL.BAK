@@ -1,0 +1,53 @@
+#include<conio.h>
+#include<stdio.h>
+#include<string.h>
+#include<graphics.h>
+#include<ctype.h>
+#include<stdlib.h>
+#include<dos.h>
+#include<string.h>
+#include "itachi.h"
+
+
+void main(){
+ int monitor, modo;
+ int a,b,x,y;
+ unsigned x_pos,y_pos,num_boton;
+ char *dias[7]={"Lunes.bmp","Martes.bmp","Miercoles.bmp","Jueves.bmp","Viernes.bmp","Sabado.bmp","Domingo.bmp"};
+
+ detectgraph(&monitor,&modo);
+ initgraph(&monitor,&modo,"\BGI");
+
+ setbkcolor(LIGHTMAGENTA);                  // Para los botones
+ imagen(getmaxx()/8, 50,    dias[0],0);  // x>84 x<259 y>55  y<100
+ imagen(getmaxx()/8, 50+50, dias[1],0);  // x>84 x<259 y>105 y<150
+ imagen(getmaxx()/8, 50+100,dias[2],0);  // x>84 x<259 y>155 y<200
+ imagen(getmaxx()/8, 50+150,dias[3],0);  // x>84 x<259 y>205 y<250
+ imagen(getmaxx()/8, 50+200,dias[4],0);  // x>84 x<259 y>255 y<300
+ imagen(getmaxx()/8, 50+250,dias[5],0);  // x>84 x<259 y>305 y<350
+ imagen(getmaxx()/8, 50+300,dias[6],0);  // x>84 x<259 y>355 y<400
+
+ setfillstyle(SOLID_FILL,CYAN);
+ bar(getmaxx()/2+50,50,getmaxx()/2+50+188,50+300);
+ rectangle(getmaxx()/2+50,50,    getmaxx()/2+50+188,50+50);
+ rectangle(getmaxx()/2+50,50+50, getmaxx()/2+50+188,50+100);
+ rectangle(getmaxx()/2+50,50+100,getmaxx()/2+50+188,50+150);
+ rectangle(getmaxx()/2+50,50+150,getmaxx()/2+50+188,50+200);
+ rectangle(getmaxx()/2+50,50+200,getmaxx()/2+50+188,50+250);
+ rectangle(getmaxx()/2+50,50+250,getmaxx()/2+50+188,50+300);
+
+
+ setcolor(GREEN);
+ setfillstyle(SOLID_FILL,YELLOW);
+ bar(getmaxx()/15,getmaxy()*13/16,getmaxx()*14/15,getmaxy()*15/16);
+ rectangle(getmaxx()/15+2,getmaxy()*13/16+2,getmaxx()*14/15-2,getmaxy()*15/16-2);
+ setcolor(RED);
+ settextstyle(TRIPLEX_FONT,HORIZ_DIR,3);
+ outtextxy(getmaxx()/15+15,getmaxy()*13/16+4,"Selecciona con el \"mouse\" el orden que creas, ");
+ outtextxy(getmaxx()/15+200,getmaxy()*13/16+26,"el correcto.");
+ mostrarraton();
+
+
+ getch();
+ closegraph();
+}
